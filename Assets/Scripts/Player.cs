@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -10,6 +11,8 @@ public class Player : MonoBehaviour
 
     private int _numSeedsLeft;
     private int _numSeedsPlanted;
+
+    private List<GameObject> seedsPlanted = new List<GameObject>();
 
     private void Start ()
     {
@@ -56,11 +59,19 @@ public class Player : MonoBehaviour
             _playerTransform.Translate(Vector3.right * _speed *Time.deltaTime);
         }
 
-        
+        if (Input.GetKeyDown(KeyCode.Space)){
+            PlantSeed();
+            _numSeeds -= 1;
+        }
+
     }
 
     public void PlantSeed ()
     {
-        
+        // if the player has seeds remaining, plants a seed at the player position
+        if (_numSeeds > 0){
+            GameObject plantObject = Instantiate(_plantPrefab, _playerTransform.position, _playerTransform.rotation);
+            seedsPlanted.Add(plantObject);
+        }
     }
 }
