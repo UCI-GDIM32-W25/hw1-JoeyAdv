@@ -16,7 +16,18 @@ public class Player : MonoBehaviour
 
     private void Start ()
     {
-        
+        // deletes the GameObject of every seed currently planted
+        List<GameObject> SeedsToDestroy = new List<GameObject>();
+        foreach (GameObject seedPlanted in seedsPlanted){
+            SeedsToDestroy.Add(seedPlanted);
+        }
+        foreach (GameObject seed in SeedsToDestroy){
+            DestroySeed(seed);
+        }
+
+        // resets the total seeds
+        _numSeedsLeft = 5;
+        _numSeedsPlanted = 0;
     }
 
     private void Update()
@@ -59,10 +70,18 @@ public class Player : MonoBehaviour
             _playerTransform.Translate(Vector3.right * _speed *Time.deltaTime);
         }
 
+        // plants seed if player presses space
         if (Input.GetKeyDown(KeyCode.Space)){
-            PlantSeed();
-            _numSeeds -= 1;
+            if(_numSeedsLeft > 0){
+                PlantSeed();
+                _numSeeds -= 1;
+                _numSeedsLeft = _numSeeds;
+                _numSeedsPlanted += 1;
+            }
         }
+
+        // updates the plant seed UI
+        _plantCountUI.UpdateSeeds(_numSeedsLeft, _numSeedsPlanted);
 
     }
 
@@ -73,5 +92,10 @@ public class Player : MonoBehaviour
             GameObject plantObject = Instantiate(_plantPrefab, _playerTransform.position, _playerTransform.rotation);
             seedsPlanted.Add(plantObject);
         }
+    }
+
+    private void DestroySeed(GameObject seed){
+        seedsPlanted.Remove(seed);
+        Destroy(seed);
     }
 }
