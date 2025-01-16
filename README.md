@@ -2,25 +2,25 @@
 # HW1
 ## W1L2 In-Class Activity
 
-How would you describe this game world in objects?
-- Player, plant, ui planted, ui remaining
-What attributes and actions do these objects have?
-- Player
-    -Attributes: sprite
-    -Actions: 
-        -Move
-            -Input: WASD
-            -Output: player changes location
-        - Plant
-            -Input: Space key
-            -Output: if seeds remaining, 1 seed planted at player location, ui planted increases and ui remaining decreases
-- Plant: prefab, no actions
-- Ui planted: text, text changes
-- Ui remaining: text, text changes
-How do these objects act on or affect each other
-- Player: creates plant
-- Ui planted: increases when player creates plant
-- Ui remaining: decreases when player creates plant
+- How would you describe this game world in objects?
+    - Player, plant, ui planted, ui remaining
+- What attributes and actions do these objects have?
+    - Player
+        - Attributes: sprite
+        - Actions: 
+            - Move
+                - Input: WASD
+                - Output: player changes location
+            - Plant
+                - Input: Space key
+                - Output: if seeds remaining, 1 seed planted at player location, ui planted increases and ui remaining decreases
+    - Plant: prefab, no actions
+    - Ui planted: text, text changes
+    - Ui remaining: text, text changes
+- How do these objects act on or affect each other
+    - Player: creates plant
+    - Ui planted: increases when player creates plant
+    - Ui remaining: decreases when player creates plant
 
 
 ## Devlog
@@ -31,3 +31,8 @@ In the first question of the break-down, Player connects to the player GameObjec
 ## Open-Source Assets
 If you added any other outside assets, list them here!
 - [Sprout Lands sprite asset pack](https://cupnooble.itch.io/sprout-lands-asset-pack) - character and item sprites
+
+## Prof comments
+Your Devlog satisfactorily connects your plans to your code.
+
+Please consider formatting your break-down activities with the hyphen '-' symbol as suggested above, and reomve the prompts. This will make it a lot easier for me to read. See the [README formatting guide here](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
